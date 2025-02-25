@@ -1,6 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { BrowserRouter as Routes, Route, BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LogIn from "./pages/LoginPage";
 import NuevaContraseña from "./pages/Nueva_contraseña";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
