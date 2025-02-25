@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Rol } from "./Tabla_usuarios_admin";
 
 

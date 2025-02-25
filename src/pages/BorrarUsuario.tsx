@@ -1,5 +1,3 @@
-import { Usuarios } from "./Tabla_usuarios_admin";
-
 interface BorrarUsuarioProps {
     showModal : boolean;
     closeModal : () => void
