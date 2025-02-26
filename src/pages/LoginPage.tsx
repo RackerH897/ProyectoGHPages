@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+const URL_BACKEND = import.meta.env.VITE_URL_BACKEND || "http://localhost:3000"
+
 const LoginPage = () => {
     const navigate = useNavigate();
     const [usuario, setUsuario] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const [error, setError] = useState<string>("");
-
    
     useEffect(() => {
         const usuarioData = sessionStorage.getItem("Usuario");
@@ -27,7 +28,7 @@ const LoginPage = () => {
         const userData = { correo, contraseña };
 
         try {
-            const resp = await fetch("http://localhost:3000/usuarios/login", {
+            const resp = await fetch(URL_BACKEND + "/usuarios/login", {
                 method: "POST",
                 body: JSON.stringify(userData),
                 headers: { "Content-Type": "application/json" },
