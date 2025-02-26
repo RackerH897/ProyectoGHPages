@@ -1,6 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route, HashRouter } from "react-router-dom";
 import LogIn from "./pages/LoginPage";
 import NuevaContraseña from "./pages/Nueva_contraseña";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
@@ -11,7 +11,7 @@ import Confirmacion_correo from './pages/Confirmacion_correo';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <BrowserRouter basename='/ProyectoGHPages'>
+    <HashRouter basename='/ProyectoGHPages'>
       <Routes>
         <Route path="/" element={<LogIn />} />
         <Route path="/nueva-contraseña" element={<NuevaContraseña />} />
@@ -20,7 +20,7 @@ createRoot(document.getElementById('root')!).render(
         <Route path="/registrar-nuevo" element={<Registrar_nuevo />} />
         <Route path="/confirmacion-correo" element={<Confirmacion_correo />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   </StrictMode>,
 )
 

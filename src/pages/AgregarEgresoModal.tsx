@@ -19,6 +19,15 @@ const AgregarEgresoModal = (props : AgregarEgresoModalProps) => {
     const [recursivo, setRecursivo] = useState<boolean>(false)
     const [categoriaId, setCategoriaId] = useState<number>(0)
 
+    const resetearDatos = () => {
+        setMonto(0.00)
+        setFecha(new Date(2000,0,1))
+        setFechaString("")
+        setDescripcion("")
+        setRecursivo(false)
+        setCategoriaId(0)
+    }
+
     return <>{props.showModal && <div className="modal-backdrop fade show"></div>}
             <div className={ props.showModal == true ? "modal fade show d-block" : "modal fade"} tabIndex={-1}>
                 <div className="modal-dialog modal-dialog-centered">
@@ -91,6 +100,7 @@ const AgregarEgresoModal = (props : AgregarEgresoModalProps) => {
                                             return //Falta llenar algun dato, no procesar.
                                         }else{
                                             props.handleAgregarEgreso({UsuarioId: UsuarioId, monto : monto, fecha : fecha, descripcion : descripcion,  recursivo : recursivo, categoriaId : categoriaId})
+                                            resetearDatos()
                                         }
                                     }}>Aceptar</button>
                                 </div>
