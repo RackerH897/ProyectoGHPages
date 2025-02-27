@@ -34,20 +34,29 @@ const Configuracion = (props:ConfiguracionProps) =>{
             const userData = JSON.parse(usuario);
             console.log("Datos parseados:", userData);
             if(userData != null && userData.correo){
-                httpObtenerUsuario(userData.correo)}
+                httpObtenerUsuario(userData.correo, userData.contraseña)
+            }
         }
     },[])
 
     
 
-    const httpObtenerUsuario = async (correo:string) => {
+    const httpObtenerUsuario = async (correo:string, contraseña:string) => {
         const url = URL_BACKEND+"/usuarios?correo="+correo
         const resp = await fetch(url)
         const data = await resp.json()
           if ( data.msg == "") {
             const Usuario = data.usuarios[0]
             if(Usuario!=null){
-                setUsuarioLogin(Usuario)}
+                setUsuarioLogin({
+                    id: Usuario.id,
+                    nombre: Usuario.nombre,
+                    contraseña: contraseña,
+                    correo: correo,
+                    rol: Usuario.rol,
+                    Rol: Usuario.Rol
+                })
+            }
             
           }else {
               console.error(`Error al obtener usuario: ${data.msg}`)
@@ -132,9 +141,9 @@ const Configuracion = (props:ConfiguracionProps) =>{
             setShowModal(false)
             } }
             Usuario={usuarioLogin}
-            EditarUsuario={ async (id:number,nombreUsuario : string, correo : string, contraseña : string) => {
+            EditarUsuario={ async (id : number,nombreUsuario : string, correo : string, contraseña : string) => {
                 await httpEditarUsuario(id, nombreUsuario, correo, contraseña)
-                await httpObtenerUsuario(correo)}}/>
+                await httpObtenerUsuario(correo, contraseña)}}/>
         </div>
         
 

@@ -14,11 +14,7 @@ const LoginPage = () => {
 
         if (usuarioData) {
             const userData = JSON.parse(usuarioData);
-            if (userData.rol === 1) {
-                navigate("/MainPage_usuario");
-            } else if (userData.rol === 2) {
-                navigate("/MainPage_admin");
-            }
+            loginHandler(userData.correo, userData.contraseña)
         }
     }, [navigate]); 
 
