@@ -11,7 +11,7 @@ import Confirmacion_correo from './pages/Confirmacion_correo';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <BrowserRouter basename='/ProyectoGHPages'>
+    <BrowserRouter basename='/Proyecto-PW-2025_0'>
       <Routes>
         <Route path="/" element={<LogIn />} />
         <Route path="/nueva-contraseña" element={<NuevaContraseña />} />
