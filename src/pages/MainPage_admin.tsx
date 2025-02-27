@@ -13,6 +13,9 @@ const MainPage_admin=() => {
   let navigate = useNavigate()
   const [activeSection, setActiveSection] = useState("dashboard"); 
   const [nombreUsuario, setNombreUsuario] = useState<string>("");
+  const [actualizarnombre,setActualizarNombre] = useState<boolean>(false)
+
+
 
   useEffect(() => {
       const usuarioData = sessionStorage.getItem("Usuario");
@@ -22,6 +25,20 @@ const MainPage_admin=() => {
           setNombreUsuario(userData.nombre); 
       }
   }, []);
+
+  const ActualizarNombre =(()=>{
+      setActualizarNombre(true)
+  })
+
+  useEffect(() => {
+    const usuarioData = sessionStorage.getItem("Usuario");
+
+    if (usuarioData) {
+        const userData = JSON.parse(usuarioData);
+        setNombreUsuario(userData.nombre); 
+    }
+    setActualizarNombre(false)
+}, [actualizarnombre]);
   
   const Opciones = () => {
     switch (activeSection) {
@@ -32,7 +49,7 @@ const MainPage_admin=() => {
       case "historial":
         return <Historial/>;
       case "configuracion":
-        return <Configuracion/>;
+        return <Configuracion ActualizarNombre = {ActualizarNombre}/>;
       
     }
   };

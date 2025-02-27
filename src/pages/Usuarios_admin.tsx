@@ -16,7 +16,7 @@ const UsuariosAdmin = () => {
   
   const httpObtenerUsuarios = async () => {
   if(filtroActivo) return;
-  const url = URL_BACKEND + "/usuarios"
+  const url = URL_BACKEND+"/usuarios"
   const resp = await fetch(url)
   const data = await resp.json()
     if (data.msg == "") {
@@ -28,7 +28,7 @@ const UsuariosAdmin = () => {
   
 
   const httpObtenerRol = async () => {
-    const url = URL_BACKEND + "/rol"
+    const url = URL_BACKEND+"/rol"
     const resp = await fetch(url)
     const data = await resp.json()
     if (data.msg == "") {
@@ -40,7 +40,7 @@ const UsuariosAdmin = () => {
 }
 
 const httpObtenerxFiltro = async (rol : number) => {
-  const url = URL_BACKEND + "/usuarios?rol="+rol
+  const url = URL_BACKEND+"/usuarios?rol="+rol
   console.log(rol)
   const resp = await fetch(url)
   const data = await resp.json()
@@ -57,7 +57,7 @@ const httpObtenerxFiltro = async (rol : number) => {
   }
 
   const httpAgregarUsuario = async (nombreUsuario : string, correo : string, contraseña : string, rol : number) => {
-    const url = URL_BACKEND + "/usuarios"
+    const url = URL_BACKEND+"/usuarios"
     const resp = await fetch(url, {
         method : "POST",
         body : JSON.stringify({

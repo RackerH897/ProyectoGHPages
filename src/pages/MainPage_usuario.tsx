@@ -14,6 +14,7 @@ const MainPage_usuario=() => {
   const [activeSection, setActiveSection] = useState("dashboard"); // Estado para controlar la sección activa
   const [nombreUsuario, setNombreUsuario] = useState<string>("");
   const [UsuarioId, setUsuarioId] = useState<number>(0)
+  const [actualizarnombre,setActualizarNombre] = useState<boolean>(false)
   useEffect(() => {
       const usuarioData = sessionStorage.getItem("Usuario");
   
@@ -23,7 +24,21 @@ const MainPage_usuario=() => {
           setNombreUsuario(userData.nombre); 
       }
   }, []);
-  
+
+  const ActualizarNombre =(()=>{
+    setActualizarNombre(true)
+})
+
+useEffect(() => {
+  const usuarioData = sessionStorage.getItem("Usuario");
+
+  if (usuarioData) {
+      const userData = JSON.parse(usuarioData);
+      setNombreUsuario(userData.nombre); 
+  }
+  setActualizarNombre(false)
+}, [actualizarnombre]);
+
   // Contenido dinámico que se mostrará en el main content
   const Opciones = () => {
     switch (activeSection) {
@@ -34,7 +49,7 @@ const MainPage_usuario=() => {
       case "presupuestos":
         return <Presupuesto/>;
       case "configuracion":
-        return <Configuracion/>;
+        return <Configuracion ActualizarNombre = {ActualizarNombre} />;
       
     }
   };
