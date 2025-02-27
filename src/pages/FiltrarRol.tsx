@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { Rol } from "./Tabla_usuarios_admin";
 
-
-
 interface FiltrarRolProps {
   showModal : boolean;
   closeModal : () => void
@@ -10,15 +8,13 @@ interface FiltrarRolProps {
   FiltrarUsuario : (rol : number) => void
 }
 
-
 const FiltrarRol = (props : FiltrarRolProps) => {
 
             const [rol, setRol] = useState<number>(1)
 
             const rolChangeHandler = (e : React.ChangeEvent<HTMLSelectElement>) => {
               setRol(parseInt(e.target.value))
-          }
-
+            }
         
              return <div className={props.showModal === true ? "modal fade show d-block bg-dark bg-opacity-50" : "modal fade"}>
              <div className="modal-dialog modal-dialog-centered" style={{ maxWidth: '400px' }}> 
