@@ -8,8 +8,6 @@ interface FormularioUsuarioProps {
     GuardarUsuario : (nombreUsuario : string, correo : string, contraseña : string, rol : number) => void
 }
 
-
-
 const RegistroUsuario = (props : FormularioUsuarioProps) => {
 
     const [nombreUsuario, setNombreUsuario] = useState<string>("")

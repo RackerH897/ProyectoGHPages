@@ -2,6 +2,8 @@ import { useState, FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import emailjs from "@emailjs/browser";
 
+const URL_BACKEND = import.meta.env.VITE_URL_BACKEND || "http://localhost:3000"
+
 const Registrar_nuevo = () => {
     const navigate = useNavigate();
     const [usuario, setUsuario] = useState<string>("");
@@ -25,7 +27,7 @@ const Registrar_nuevo = () => {
             console.log("🔹 Código generado:", codigoGenerado); 
 
             
-            const response = await fetch("http://localhost:3000/usuarios/ingresar-codigo", {
+            const response = await fetch(URL_BACKEND + "/usuarios/ingresar-codigo", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ codigo: codigoGenerado }),

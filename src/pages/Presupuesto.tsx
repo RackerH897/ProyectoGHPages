@@ -4,6 +4,7 @@ import EditarPresupuesto from "./EditarPresupuesto"
 import BorrarPresupuesto from "./Borrarpresupuesto"
 import { Categoria } from "./EditarPresupuesto"
 
+const URL_BACKEND = import.meta.env.VITE_URL_BACKEND || "http://localhost:3000"
 
 interface Presupuesto{
   id : number;
@@ -57,7 +58,7 @@ const Presupuesto = () => {
     
 
     const httpObtenerPresupuestos = async (UsuarioId:number) => {
-      const url = "http://localhost:3000/presupuestos?UsuarioId="+UsuarioId
+      const url = URL_BACKEND + "/presupuestos?UsuarioId="+UsuarioId
       const resp = await fetch(url)
       const data = await resp.json()
         if (data.msg == "") {
@@ -70,7 +71,7 @@ const Presupuesto = () => {
       }
     
     const httpObtenerCategorias = async () => {
-      const url = "http://localhost:3000/categorias"
+      const url = URL_BACKEND + "/categorias"
       const resp = await fetch(url)
       const data = await resp.json()
       if (data.msg == "") {
@@ -82,7 +83,7 @@ const Presupuesto = () => {
     }
     
     const httpAgregarPresupuesto = async (UsuarioId : number, monto_Mensual : number, categoriaId : number) => {
-      const url = "http://localhost:3000/presupuestos"
+      const url = URL_BACKEND + "/presupuestos"
       const resp = await fetch(url, {
           method : "POST",
           body : JSON.stringify({
@@ -111,7 +112,7 @@ const Presupuesto = () => {
       },[usuarioId])
 
     const httpEditarPresupuesto = async ( monto_Mensual: number,categoriaId: number, PresupuestoSeleccionado : Presupuesto) => {
-      const url = "http://localhost:3000/presupuestos?id="+PresupuestoSeleccionado.id
+      const url = URL_BACKEND + "/presupuestos?id="+PresupuestoSeleccionado.id
       const resp = await fetch(url, {
         method: "PUT",
         body: JSON.stringify({
@@ -132,7 +133,7 @@ const Presupuesto = () => {
     }
       
     const httpEliminarPresupuesto = async (PresupuestoEliminar : Presupuesto) => {
-      const url = "http://localhost:3000/presupuestos?id="+PresupuestoEliminar.id
+      const url = URL_BACKEND + "/presupuestos?id="+PresupuestoEliminar.id
       const resp = await fetch(url, {
           method : "DELETE"
       })

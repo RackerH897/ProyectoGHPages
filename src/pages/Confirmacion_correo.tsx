@@ -2,12 +2,13 @@ import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-
 interface LocationState {
     email: string;
     usuario: string;
     password: string;
 }
+
+const URL_BACKEND = import.meta.env.VITE_URL_BACKEND || "http://localhost:3000"
 
 const ConfirmacionCorreo = () => {
     const location = useLocation();
@@ -23,7 +24,7 @@ const ConfirmacionCorreo = () => {
 
     const handleVerificarCodigo = async () => {
         try {
-            const response = await fetch("http://localhost:3000/usuarios/verificar-codigo", {
+            const response = await fetch(URL_BACKEND + "/usuarios/verificar-codigo", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ codigo }),
@@ -34,7 +35,7 @@ const ConfirmacionCorreo = () => {
                 setMensajeError("");
 
        
-                const usuarioResponse = await fetch("http://localhost:3000/usuarios/", {
+                const usuarioResponse = await fetch(URL_BACKEND + "/usuarios/", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({

@@ -3,6 +3,7 @@ import EditarInfoUsuario from "./EditarInfoUsuario"
 import { Usuarios } from "./Tabla_usuarios_admin"
 import { Rol } from "./Tabla_usuarios_admin"
 
+const URL_BACKEND = import.meta.env.VITE_URL_BACKEND || "http://localhost:3000"
 
 const Configuracion = () =>{
 
@@ -36,7 +37,7 @@ const Configuracion = () =>{
     
 
     const httpObtenerUsuario = async (correo:string) => {
-        const url = "http://localhost:3000/usuarios?correo="+correo
+        const url = URL_BACKEND + "/usuarios?correo="+correo
         const resp = await fetch(url)
         const data = await resp.json()
           if ( data.msg == "") {
@@ -50,7 +51,7 @@ const Configuracion = () =>{
         }
     
     const httpEditarUsuario = async (id : number, nombreUsuario: string, correo: string, contraseña: string) => {
-        const url = "http://localhost:3000/usuarios?id="+id
+        const url = URL_BACKEND + "/usuarios?id="+id
         const resp = await fetch(url, {
             method: "PUT",
             body: JSON.stringify({

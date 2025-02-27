@@ -8,8 +8,6 @@ interface EditarioUsuarioProps {
     EditarUsuario : (id:number, nombreUsuario : string, correo : string, contraseña : string, rol : number) => void
 }
 
-
-
 const EditarUsuario = (props : EditarioUsuarioProps) => {
     
     const [id, setId] = useState<number>(props.UsuarioSeleccionadoEditar.id)
