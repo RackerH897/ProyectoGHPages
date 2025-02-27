@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 
+const URL_BACKEND = import.meta.env.VITE_URL_BACKEND || "http://localhost:3000"
+
 // Registrar los componentes de Chart.js que necesitamos
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
@@ -28,7 +30,7 @@ const Dashboard = () => {
 
   //
   useEffect(() => {
-    fetch("http://localhost:3000/egresos/egresos-por-mes")
+    fetch(URL_BACKEND+"/egresos/egresos-por-mes")
       .then((response) => response.json())
       .then((data) => {
         const nuevosEgresos = Array(12).fill(0);
@@ -45,7 +47,7 @@ const Dashboard = () => {
 
   //
   useEffect(() => {
-    fetch("http://localhost:3000/egresos/egresos-por-categoria")
+    fetch(URL_BACKEND+"/egresos/egresos-por-categoria")
       .then((response) => response.json())
       .then((data) => {
         console.log("🔹 Datos de la API:", data); // Verifica qué llega desde la API

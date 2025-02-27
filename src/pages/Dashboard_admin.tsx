@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from "chart.js";
 
+const URL_BACKEND = import.meta.env.VITE_URL_BACKEND || "http://localhost:3000"
+
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 const Dashboard_admin = () => {
@@ -12,12 +14,12 @@ const Dashboard_admin = () => {
     // Obtener cantidad de usuarios desde la API
     useEffect(() => {
         // Fetch para el total de usuarios (mantiene la funcionalidad 1)
-        fetch("http://localhost:3000/usuarios/contar")
+        fetch(URL_BACKEND+"/usuarios/contar")
             .then((response) => response.json())
             .then((data) => setTotalUsuarios(data.totalUsuarios))
             .catch((error) => console.error("Error al obtener usuarios:", error));
         
-        fetch("http://localhost:3000/usuarios/usuarios-por-mes")
+        fetch(URL_BACKEND+"/usuarios/usuarios-por-mes")
         .then((response) => response.json())
         .then((data) => {
             const usuariosMesArray = Array(12).fill(0);
