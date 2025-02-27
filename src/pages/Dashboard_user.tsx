@@ -118,7 +118,6 @@ const Dashboard = () => {
             <h5 className="text-left mb-3">Gastos por categoría</h5>
             <div className="p-3 rounded-3 bg-light" style={{ height: '40vh', minHeight: '250px', width: '100%' }}>
             <Bar data={DataCategoria} options={{ responsive: true, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true } } }} />
-
             </div>
           </div>
         </div>
