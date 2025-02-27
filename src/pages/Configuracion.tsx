@@ -56,6 +56,11 @@ const Configuracion = (props:ConfiguracionProps) =>{
                     rol: Usuario.rol,
                     Rol: Usuario.Rol
                 })
+                const usuarioData = sessionStorage.getItem("Usuario");
+                let userData = JSON.parse(usuarioData!);
+                userData.contraseña = contraseña
+                sessionStorage.setItem("Usuario", JSON.stringify(userData));
+                console.log("✅ Datos reguardados en sessionStorage:", sessionStorage.getItem("Usuario"));
             }
             
           }else {
