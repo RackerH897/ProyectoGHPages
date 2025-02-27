@@ -22,7 +22,7 @@ export interface Rol {
     listaElementos : Usuarios[];
     openModal : () => void
     openModalAgregar : () => void  
-    ObtenerUsuario : () => void
+    ObtenerUsuarios : () => void
     ObtenerxFiltro : (rol : number) => void
     rol : number
     FiltroActivo : boolean
@@ -68,7 +68,7 @@ const TablaUsuario = (props : usuarioProps) => {
       if (props.FiltroActivo && props.rol !== null) {
         await props.ObtenerxFiltro(props.rol);
       } else {
-          await props.ObtenerUsuario()
+          await props.ObtenerUsuarios()
       }
       setEditar(false)
     } else {
@@ -86,7 +86,7 @@ const TablaUsuario = (props : usuarioProps) => {
       if (props.FiltroActivo && props.rol !== null) {
         await props.ObtenerxFiltro(props.rol);
       } else {
-          await props.ObtenerUsuario()
+          await props.ObtenerUsuarios()
       }
         setBorrar(false)
     }else {
@@ -95,7 +95,7 @@ const TablaUsuario = (props : usuarioProps) => {
   }
 
   useEffect( ()=> {
-    props.ObtenerUsuario()
+    props.ObtenerUsuarios()
     
   },[!props.FiltroActivo])
 

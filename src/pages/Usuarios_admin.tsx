@@ -103,7 +103,7 @@ const closeModalAgregar = () => {
   ///}
   
   return <>
-        <TablaUsuario listaElementos={usuarios} FiltroActivo={filtroActivo} openModalAgregar={() => {setAgregar(true)}} openModal={() => {setShowModal(true)}} ObtenerUsuario={httpObtenerUsuarios} ObtenerxFiltro={httpObtenerxFiltro} rol={rolFiltrado}/>
+        <TablaUsuario listaElementos={usuarios} FiltroActivo={filtroActivo} openModalAgregar={() => {setAgregar(true)}} openModal={() => {setShowModal(true)}} ObtenerUsuarios={httpObtenerUsuarios} ObtenerxFiltro={httpObtenerxFiltro} rol={rolFiltrado}/>
         <RegistroUsuario showModal={ showAgregar } roles={Roles} closeModal={closeModalAgregar} GuardarUsuario={ async (nombreUsuario : string, correo : string, contraseña : string, rol : number) => {
                 await httpAgregarUsuario(nombreUsuario, correo, contraseña, rol)
             }}/>
