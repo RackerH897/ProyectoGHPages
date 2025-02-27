@@ -17,7 +17,7 @@ const AgregarEgresoModal = (props : AgregarEgresoModalProps) => {
     const [fechaString, setFechaString] = useState<string>("")
     const [descripcion, setDescripcion] = useState<string>("")
     const [recursivo, setRecursivo] = useState<boolean>(false)
-    const [categoriaId, setCategoriaId] = useState<number>(0)
+    const [categoriaId, setCategoriaId] = useState<number>(1)
 
     const resetearDatos = () => {
         setMonto(0.00)
@@ -25,7 +25,7 @@ const AgregarEgresoModal = (props : AgregarEgresoModalProps) => {
         setFechaString("")
         setDescripcion("")
         setRecursivo(false)
-        setCategoriaId(0)
+        setCategoriaId(1)
     }
 
     return <>{props.showModal && <div className="modal-backdrop fade show"></div>}
